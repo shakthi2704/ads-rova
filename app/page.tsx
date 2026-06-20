@@ -1,9 +1,15 @@
-import Image from "next/image";
+import Hero from "@/components/sections/Hero";
+import LogoStrip from "@/components/sections/LogoStrip";
+import Services from "@/components/sections/Services";
+import WhyChooseUs from "@/components/sections/WhyChooseUs";
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      ads rova
-    </div>
+    <main>
+      <Hero />
+      <LogoStrip />
+      <Services />
+      <WhyChooseUs />
+    </main>
   );
 }
