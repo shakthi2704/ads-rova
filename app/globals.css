@@ -1,25 +1,29 @@
 @import "tailwindcss";
 
 @theme {
-  /* ── Brand ── */
+  /* ── Gold — pulled from logo ── */
   --color-gold: #F5C518;
-  --color-gold-light: #FFD740;
-  --color-gold-deep: #C49A14;
-  --color-crimson: #FF1A1A;
-  --color-crimson-mid: #CC1515;
-  --color-crimson-deep: #991010;
+  --color-gold-deep: #D4960A;
+  --color-gold-dim: #A67C00;
 
-  /* ── Dark system — NOT pure black ── */
-  --color-ink: #0F0F12;
-  --color-ink-soft: #141418;
-  --color-surface-1: #1A1A1F;
-  --color-surface-2: #222228;
-  --color-surface-3: #2A2A32;
+  /* ── Crimson — pulled from logo (deep, not flat) ── */
+  --color-crimson: #CC1A00;
+  --color-crimson-mid: #A61500;
+
+  /* ── Surfaces ── */
+  --color-black: #000000;
+  --color-surface: #0D0D0B;
+  --color-surface-2: #141410;
+  --color-strip: #111111;
+
+  /* ── Borders ── */
   --color-border: rgba(245, 197, 24, 0.12);
-  --color-border-soft: rgba(255, 255, 255, 0.07);
-  --color-mid-gray: #888892;
-  --color-text-muted: rgba(255, 255, 255, 0.50);
+  --color-border-hover: rgba(245, 197, 24, 0.32);
+
+  /* ── Text ── */
+  --color-text-body: rgba(255, 255, 255, 0.55);
   --color-text-soft: rgba(255, 255, 255, 0.72);
+  --color-text-muted: rgba(255, 255, 255, 0.30);
   --color-white: #FFFFFF;
 
   /* ── Typography ── */

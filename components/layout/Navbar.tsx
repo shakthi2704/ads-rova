@@ -8,12 +8,11 @@ import { usePathname } from "next/navigation";
 const NAV_LINKS = [
     { label: "About", href: "/about" },
     { label: "Services", href: "/services" },
-    { label: "Hospitality", href: "/hospitality" },
+    { label: "Industries", href: "/industries" },
     { label: "Portfolio", href: "/portfolio" },
     { label: "Packages", href: "/packages" },
     { label: "Contact", href: "/contact" },
 ];
-
 export default function Navbar(): React.ReactElement {
     const [scrolled, setScrolled] = useState(false);
     const [menuOpen, setMenuOpen] = useState(false);
