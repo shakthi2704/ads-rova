@@ -13,6 +13,7 @@ const NAV_LINKS = [
     { label: "Packages", href: "/packages" },
     { label: "Contact", href: "/contact" },
 ];
+
 export default function Navbar(): React.ReactElement {
     const [scrolled, setScrolled] = useState(false);
     const [menuOpen, setMenuOpen] = useState(false);
@@ -38,7 +39,7 @@ export default function Navbar(): React.ReactElement {
             <header
                 className="fixed top-0 left-0 right-0 z-50"
                 style={{
-                    background: scrolled ? "rgba(15,15,18,0.96)" : "transparent",
+                    background: scrolled ? "rgba(0,0,0,0.92)" : "transparent",
                     backdropFilter: scrolled ? "blur(24px)" : "none",
                     WebkitBackdropFilter: scrolled ? "blur(24px)" : "none",
                     borderBottom: scrolled
@@ -54,7 +55,7 @@ export default function Navbar(): React.ReactElement {
                 <div
                     className="absolute bottom-0 left-0 right-0 h-px"
                     style={{
-                        background: "linear-gradient(90deg, transparent 0%, #FF1A1A 25%, #F5C518 50%, #FF1A1A 75%, transparent 100%)",
+                        background: "linear-gradient(90deg, transparent 0%, #CC1A00 25%, #F5C518 50%, #CC1A00 75%, transparent 100%)",
                         opacity: scrolled ? 1 : 0,
                         transitionProperty: "opacity",
                         transitionDuration: "0.45s",
@@ -111,7 +112,7 @@ export default function Navbar(): React.ReactElement {
                                     <Link
                                         href={link.href}
                                         data-active={active ? "true" : "false"}
-                                        className="rova-nav-link relative px-3.5 py-2 text-sm font-500 tracking-wide inline-block"
+                                        className="rova-nav-link relative px-4 py-2 text-sm font-500 tracking-wide inline-block"
                                         style={{
                                             color: active
                                                 ? "#F5C518"
@@ -119,9 +120,8 @@ export default function Navbar(): React.ReactElement {
                                         }}
                                     >
                                         {link.label}
-                                        {/* Underline — always visible on active, slides in on hover */}
                                         <span
-                                            className="rova-nav-underline absolute bottom-1 left-3.5 right-3.5 h-px"
+                                            className="rova-nav-underline absolute bottom-1 left-4 right-4 h-px"
                                             style={{
                                                 background: "#F5C518",
                                                 transformOrigin: "left center",
@@ -146,9 +146,9 @@ export default function Navbar(): React.ReactElement {
                             className="rova-cta hidden lg:inline-flex items-center gap-2 px-5 py-2.5 text-sm font-600 overflow-hidden"
                             style={{
                                 background: "#F5C518",
-                                color: "#0F0F12",
+                                color: "#0D0D0B",
                                 borderRadius: "6px",
-                                boxShadow: "0 4px 20px rgba(245,197,24,0.28)",
+                                boxShadow: "0 4px 20px rgba(245,197,24,0.25)",
                                 letterSpacing: "0.01em",
                                 position: "relative",
                             }}
@@ -168,11 +168,10 @@ export default function Navbar(): React.ReactElement {
                                     />
                                 </svg>
                             </span>
-                            {/* Shimmer overlay */}
                             <span className="rova-cta-shimmer" aria-hidden />
                         </Link>
 
-                        {/* Hamburger — cleaner X animation */}
+                        {/* Hamburger — animates to X */}
                         <button
                             onClick={() => setMenuOpen(!menuOpen)}
                             className="lg:hidden flex flex-col items-center justify-center w-10 h-10 gap-[6px]"
@@ -204,53 +203,42 @@ export default function Navbar(): React.ReactElement {
                 </nav>
             </header>
 
-            {/* ── Mobile full-screen menu ── */}
+            {/* ── Mobile full-screen menu — z-[60] sits ABOVE the header ── */}
             <div
-                className="fixed inset-0 z-40 flex flex-col"
+                className="fixed inset-0 z-[60] flex flex-col"
                 style={{
-                    background: "#0F0F12",
+                    background: "#000000",
                     opacity: menuOpen ? 1 : 0,
                     pointerEvents: menuOpen ? "auto" : "none",
                     transitionProperty: "opacity",
-                    transitionDuration: "0.38s",
+                    transitionDuration: "0.35s",
                     transitionTimingFunction: "ease",
                 }}
             >
-                {/* Subtle grid */}
-                <div
-                    className="absolute inset-0 pointer-events-none"
-                    style={{
-                        backgroundImage: `
-                            linear-gradient(rgba(245,197,24,0.04) 1px, transparent 1px),
-                            linear-gradient(90deg, rgba(245,197,24,0.04) 1px, transparent 1px)
-                        `,
-                        backgroundSize: "60px 60px",
-                    }}
-                />
-                {/* Crimson glow corner */}
+                {/* Subtle gold glow — top right */}
                 <div
                     className="absolute pointer-events-none"
                     style={{
-                        bottom: "-5%", left: "-5%",
-                        width: "55vw", height: "55vw",
-                        background: "radial-gradient(ellipse at center, rgba(255,26,26,0.09) 0%, transparent 65%)",
+                        top: "-10%", right: "-10%",
+                        width: "50vw", height: "50vw",
+                        background: "radial-gradient(ellipse at center, rgba(212,150,10,0.08) 0%, transparent 70%)",
                         borderRadius: "50%",
-                        filter: "blur(40px)",
+                        filter: "blur(50px)",
                     }}
                 />
-                {/* Gold glow corner */}
+                {/* Subtle crimson glow — bottom left */}
                 <div
                     className="absolute pointer-events-none"
                     style={{
-                        top: "-5%", right: "-5%",
-                        width: "45vw", height: "45vw",
-                        background: "radial-gradient(ellipse at center, rgba(245,197,24,0.07) 0%, transparent 65%)",
+                        bottom: "-10%", left: "-10%",
+                        width: "40vw", height: "40vw",
+                        background: "radial-gradient(ellipse at center, rgba(204,26,0,0.07) 0%, transparent 70%)",
                         borderRadius: "50%",
-                        filter: "blur(40px)",
+                        filter: "blur(50px)",
                     }}
                 />
 
-                {/* Top bar — logo + close */}
+                {/* Top bar — single logo + single close */}
                 <div
                     className="relative z-10 flex items-center justify-between px-6 py-5"
                     style={{ borderBottom: "1px solid rgba(245,197,24,0.08)" }}
@@ -268,21 +256,29 @@ export default function Navbar(): React.ReactElement {
                                 className="object-contain"
                             />
                         </div>
-                        <span
-                            className="text-[11px] font-700 tracking-[0.24em] uppercase"
-                            style={{ color: "#F5C518" }}
-                        >
-                            ADS ROVA
-                        </span>
+                        <div className="flex flex-col leading-none gap-[3px]">
+                            <span
+                                className="text-[11px] font-700 tracking-[0.24em] uppercase"
+                                style={{ color: "#F5C518" }}
+                            >
+                                ADS ROVA
+                            </span>
+                            <span
+                                className="text-[9px] font-400 tracking-[0.14em] uppercase"
+                                style={{ color: "rgba(255,255,255,0.28)" }}
+                            >
+                                Digital Marketing
+                            </span>
+                        </div>
                     </Link>
 
                     <button
                         onClick={() => setMenuOpen(false)}
                         className="flex items-center justify-center w-9 h-9"
                         style={{
-                            border: "1px solid rgba(245,197,24,0.18)",
+                            border: "1px solid rgba(245,197,24,0.15)",
                             borderRadius: "6px",
-                            color: "rgba(255,255,255,0.55)",
+                            color: "rgba(255,255,255,0.45)",
                         }}
                         aria-label="Close menu"
                     >
@@ -326,7 +322,7 @@ export default function Navbar(): React.ReactElement {
                                         <span
                                             className="flex-shrink-0 text-[11px] font-600 tabular-nums"
                                             style={{
-                                                color: active ? "#FF1A1A" : "rgba(255,255,255,0.18)",
+                                                color: active ? "#CC1A00" : "rgba(255,255,255,0.18)",
                                                 letterSpacing: "0.06em",
                                                 width: "22px",
                                             }}
@@ -336,7 +332,7 @@ export default function Navbar(): React.ReactElement {
 
                                         {/* Link label */}
                                         <span
-                                            className="text-[2rem] font-700 leading-none tracking-tight flex-1"
+                                            className="text-[2rem] font-700 leading-none flex-1"
                                             style={{
                                                 letterSpacing: "-0.02em",
                                                 color: active ? "#F5C518" : "rgba(255,255,255,0.82)",
@@ -348,7 +344,7 @@ export default function Navbar(): React.ReactElement {
                                             {link.label}
                                         </span>
 
-                                        {/* Arrow (active pages only) */}
+                                        {/* Arrow — active pages only */}
                                         <svg
                                             width="16" height="16" viewBox="0 0 16 16" fill="none"
                                             style={{
@@ -375,7 +371,7 @@ export default function Navbar(): React.ReactElement {
                     </ul>
                 </nav>
 
-                {/* Bottom section — CTA + meta */}
+                {/* Bottom — CTA + WhatsApp + location */}
                 <div
                     className="relative z-10 px-6 pt-5 pb-8"
                     style={{
@@ -395,7 +391,7 @@ export default function Navbar(): React.ReactElement {
                             className="inline-flex items-center gap-2 px-6 py-3 text-sm font-600"
                             style={{
                                 background: "#F5C518",
-                                color: "#0F0F12",
+                                color: "#0D0D0B",
                                 borderRadius: "6px",
                                 letterSpacing: "0.01em",
                             }}
@@ -412,7 +408,7 @@ export default function Navbar(): React.ReactElement {
                             </svg>
                         </Link>
 
-                        {/* WhatsApp icon */}
+                        {/* WhatsApp */}
                         <a
                             href="https://wa.me/94XXXXXXXXX"
                             target="_blank"
@@ -421,7 +417,7 @@ export default function Navbar(): React.ReactElement {
                             style={{
                                 border: "1px solid rgba(245,197,24,0.15)",
                                 borderRadius: "6px",
-                                color: "rgba(255,255,255,0.38)",
+                                color: "rgba(255,255,255,0.35)",
                             }}
                             aria-label="WhatsApp"
                         >
@@ -441,45 +437,35 @@ export default function Navbar(): React.ReactElement {
             </div>
 
             <style>{`
-                /* Hover: underline slides in from left */
                 .rova-nav-link:hover .rova-nav-underline {
                     transform: scaleX(1) !important;
                 }
-                /* Hover: text turns gold */
                 .rova-nav-link:hover {
                     color: #F5C518 !important;
                 }
 
-                /* CTA shimmer effect */
-                .rova-cta { transition: box-shadow 0.25s ease, transform 0.25s ease; }
+                .rova-cta {
+                    transition: box-shadow 0.25s ease, transform 0.25s ease;
+                }
                 .rova-cta:hover {
-                    box-shadow: 0 6px 32px rgba(245,197,24,0.50) !important;
+                    box-shadow: 0 6px 32px rgba(245,197,24,0.45) !important;
                     transform: translateY(-1px);
                 }
                 .rova-cta-shimmer {
                     position: absolute;
                     inset: 0;
-                    background: linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.22) 50%, transparent 60%);
+                    background: linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.20) 50%, transparent 60%);
                     transform: translateX(-100%);
                     transition: transform 0.5s ease;
                 }
                 .rova-cta:hover .rova-cta-shimmer {
                     transform: translateX(100%);
                 }
-
-                /* Arrow nudge on CTA hover */
                 .rova-cta-arrow {
                     transition: transform 0.22s ease;
                 }
                 .rova-cta:hover .rova-cta-arrow {
                     transform: translateX(3px);
-                }
-
-                /* Mobile link hover */
-                @media (hover: hover) {
-                    .group:hover span:nth-child(2) {
-                        color: #F5C518;
-                    }
                 }
             `}</style>
         </>
